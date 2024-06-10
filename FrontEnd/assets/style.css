@@ -57,6 +57,7 @@ header {
 	display: flex;
 	justify-content: space-between;
 	margin: 50px 0
+	
 }
 section {
 	margin: 50px 0
@@ -94,7 +95,10 @@ nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
 }
-
+nav a {
+	text-decoration: none;
+	color: black;
+}
 li:hover {
 	color: #B1663C;
 }
@@ -124,9 +128,11 @@ li:hover {
 #portfolio h2 {
 	text-align: center;
 	margin-bottom: 1em;
+	padding-top: 30px;
 }
 .gallery {
 	width: 100%;
+	padding-top: 30px;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 20px;
@@ -168,6 +174,30 @@ margin: auto;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+#filtres{
+	display: flex;
+	justify-content: center;
+}
+.filtres{
+	font-family: 'Syne';
+	font-weight: 700;
+	color: #1D6154;
+	background-color: white;
+	margin : 30px 10px;
+	padding: 0px 15px;
+	text-align: center;
+	border-radius: 60px ;
+	height: 50px;
+	min-width: 100px;
+	font-size: 1.2em;
+	border: 1.5px solid #1D6154;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	cursor: pointer;
+	&:hover {
+		color: white;
+		background-color: #1D6154;
+	}
+}
 
 input[type="submit"]{
 	font-family: 'Syne';
@@ -178,6 +208,7 @@ input[type="submit"]{
 	width: 180px;
 	text-align: center;
 	border-radius: 60px ;
+	cursor: pointer;
 }
 
 footer nav ul {
@@ -186,3 +217,318 @@ footer nav ul {
 	margin: 2em
 }
 
+
+#login{
+	text-align: center;
+	margin-top: 20%;
+	margin-bottom: 35%;
+	h2{
+		padding-bottom: 20px;
+	}
+	form {
+		padding-top: 10px;
+		margin: auto;
+		width: 50%;
+		display: flex;
+		flex-direction: column;
+	}
+	
+	input {
+		height: 50px;
+		font-size: 1.2em;
+		border: none;
+		box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+		
+	}
+	label {
+		margin: 2em 0 1em 0;
+		font-weight: 500;
+		text-align: left;
+	}
+	 textarea {
+		border: none;
+		box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	}
+	a{
+		color: black;
+	}
+	.inputErreur{
+		border: 1px solid red;
+	}
+	.messageErreur{
+		color:red;
+	}
+}
+
+#modif{
+	font-size: 16px;
+	color: black;
+	text-decoration: none;
+	padding-left: 20px;
+	padding-top: 8px;
+	position: absolute;
+	cursor: pointer;
+}
+.edit{
+	text-align: center;
+	background-color: black;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	color: white;
+	text-decoration: none;
+	height: 20px;
+	width: 100%;
+	padding-top: 10px;
+	z-index: 2;
+	cursor: pointer;
+	
+	
+}
+
+.modale{
+	display: none;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top:0;
+	left:0;
+	background-color: rgba(34, 31, 31, 0.384);
+	width: 100%;
+	height: 100%;
+	h3{
+		font-size: 26px;
+		margin: 40px;
+		font-size: 30px;
+		font-weight: 500;
+	}
+	.modaleBoite {
+		background-color: white;
+		width: 50%;
+		height: 70%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+		border-radius: 10px;
+		position: relative;
+		h3{
+			margin: 40px;
+			font-size: 30px;
+			font-weight: 500;
+		}
+		.croix{
+			position: absolute;
+			top: 20px;
+			right: 20px;
+			cursor: pointer;
+		}
+		button{
+			font-family: 'Syne';
+			font-size:medium;
+			font-weight: 700;
+			color: white;
+			background-color: #1D6154;
+			margin : 2em auto ;
+			text-align: center;
+			border: none;
+			border-radius: 60px ;
+			height: 45px;
+			width: 50%;
+			cursor: pointer;
+			&:hover {
+				color: #1D6154;
+				background-color: white;
+				border: black solid 0.1px;
+			}
+		}
+		.modaleGalerie{
+			border-bottom: rgb(219, 219, 219) solid 2px;
+			padding-bottom: 40px;
+			margin-left: 11%;
+			margin-right: 11%;
+			margin-bottom: 10px;
+			max-width: 68%;
+			display:flex;
+			flex-flow: row wrap;
+			row-gap: 10px;
+			column-gap: 10px;
+		}
+	figure{
+		width:18%;
+	}
+	img{
+			width: 100%;
+		}
+	.poubelle{
+		color: white;
+		font-size: small;
+		background-color: black;
+		cursor: pointer;
+		padding: 4px;
+		border-radius: 5px;
+		position: relative;
+		left: 74%;
+		top:17%;
+	}
+	}
+	.modaleBoiteAjout {
+		background-color: white;
+		width: 50%;
+		height: 70%;
+		display: none;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+		border-radius: 10px;
+		position: absolute;
+		.croix{
+			position: absolute;
+			top: 20px;
+			right: 20px;
+			cursor: pointer;
+		}
+		.fleche{
+			position: absolute;
+			top: 20px;
+			left: 20px;
+			cursor: pointer;
+		}
+		.modaleFormAjout{
+			display: flex;
+			flex-direction: column;
+			height: 75%;
+			width: 70%;
+			gap: 20px;
+			.formPhoto{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				background-color: #E8F1F6;
+				height: 40%;
+				i{
+					font-size: 7em;
+					padding-top: 30px;
+					color: #CBD6DC;
+				}
+				label{
+					text-align: center;
+					display: flex;
+					flex-direction: column;
+					gap: 5px;
+					width: 50%;
+					
+				}
+				.btnInputSelection{
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					color: #306685;
+					font-size: 20px;
+					font-weight: 500;
+					background-color:#cbd6dc;
+					border-radius: 50px;
+					height: 40px;
+					width: 100%;
+					cursor: pointer;
+					}
+				input{
+					opacity: 0;
+				}
+				img{
+					position: relative;
+					max-height:100%;
+					display: none;
+
+				}
+			}
+			.formTitre{
+				display: flex;
+				flex-direction: column;
+				label{
+					font-size: 16px;
+				}
+				input{
+					background: #FFF;
+					font-size: 14px;
+					height: 51px;
+					margin-top:10px;
+					padding-left: 20px;
+					padding-right: 20px;
+					border: none;
+					box-shadow: 3px 3px 15px  rgba(65, 64, 64, 0.09);
+				}
+			}
+			.formCategorie{
+				display: flex;
+				flex-direction: column;
+				border-bottom: rgb(219, 219, 219) solid 2px;
+				label{
+					font-size: 16px;
+				}
+				select{
+					background: #FFF;
+					font-size: 14px;
+					height: 51px;
+					margin-top:10px;
+					margin-bottom: 35px;
+					padding-left: 20px;
+					padding-right: 20px;
+					border: none;
+					box-shadow: 3px 3px 15px  rgba(65, 64, 64, 0.09);
+					appearance: none;
+				}
+				i{
+					position:relative;
+					display: flex;
+					justify-content: end;
+					right: 30px;
+					bottom: 65px;
+					pointer-events: none;
+					
+				}
+			}
+			button{
+				font-family: 'Syne';
+				font-size:medium;
+				font-weight: 700;
+				margin : 1.5em auto ;
+				text-align: center;
+				border: none;
+				color: white;
+				
+				border-radius: 60px ;
+				height: 45px;
+				width: 100%;
+				
+				
+				
+			}
+			
+		}
+		.notif{
+				margin-top:0px ;
+				height: 5%;
+				font-size: 20px;
+				position: relative;
+				bottom: 20px;
+			}
+		.ajout{
+			color: #28685c;
+		}
+		.echec{
+			color:rgb(252, 71, 17);
+		}
+	}
+}
+.button{
+	background-color: #a7a7a7;
+}
+.valide {
+	background-color: #1D6154;
+	border: black solid 1px;
+	cursor: pointer;
+}
+.nonValide{
+	background-color: rgba(83, 83, 83, 0.336);
+}
