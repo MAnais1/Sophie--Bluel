@@ -306,8 +306,8 @@ async function formComplet() {
       btnValidation.classList.add("nonValide");
       btnValidation.classList.remove("button");
       console.log("le form pas correctement renseigne");
-      (notif.textContent = "Veuillez remplir tous les champs du formulaire."),
-        notif.classList.add("echec");
+      notif.textContent = "Veuillez remplir tous les champs du formulaire.";
+      notif.classList.add("echec");
     }
   });
 }
