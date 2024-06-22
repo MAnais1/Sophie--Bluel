@@ -16,16 +16,11 @@ form.addEventListener("submit",(e)=>{
         console.log(reponseForm);
     const chargeUtile = JSON.stringify(reponseForm);
     console.log(chargeUtile);
-    async function recuperationUtilisateurs(){
-        const reponse = await fetch ("http://localhost:5678/api/users/login", {
-            method:"POST",
-            headers:{"Content-Type": "application/json"},
-            body:chargeUtile,
-        })
-        return await reponse.json();
-    }
-    async function login(){
-        const utilisateurs = await recuperationUtilisateurs();
+    login(chargeUtile);
+})
+
+async function login(chargeUtile){
+        const utilisateurs = await recuperationUtilisateurs(chargeUtile);
         console.log(utilisateurs);
         const token=utilisateurs.token;
         const userId=utilisateurs.id;
@@ -41,15 +36,16 @@ form.addEventListener("submit",(e)=>{
             erreur.textContent="Veulliez vérifier votre saisie. Votre email ou mot de passe est incorrect."
         }
     }
-    login();
+
+async function recuperationUtilisateurs(chargeUtile){
+        const reponse = await fetch ("http://localhost:5678/api/users/login", {
+            method:"POST",
+            headers:{"Content-Type": "application/json"},
+            body:chargeUtile,
+        })
+        return await reponse.json();
+    }
     
-        
-    
-
-})
-
-
-
 
 
 
