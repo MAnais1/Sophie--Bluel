@@ -4,7 +4,9 @@ const form = document.querySelector("form");
 const erreur =document.getElementById("erreur") 
 
 
-
+/**
+ * Récupération des données du formulaire 
+ */
 form.addEventListener("submit",(e)=>{
     e.preventDefault();
     const emailUti=email.value;
@@ -18,7 +20,20 @@ form.addEventListener("submit",(e)=>{
     console.log(chargeUtile);
     login(chargeUtile);
 })
-
+/**
+ * Fonction qui envoie une requête avec les données 
+ */
+async function recuperationUtilisateurs(chargeUtile){
+        const reponse = await fetch ("http://localhost:5678/api/users/login", {
+            method:"POST",
+            headers:{"Content-Type": "application/json"},
+            body:chargeUtile,
+        })
+        return await reponse.json();
+}
+/**
+ * Fonction login 
+ */   
 async function login(chargeUtile){
         const utilisateurs = await recuperationUtilisateurs(chargeUtile);
         console.log(utilisateurs);
@@ -37,15 +52,7 @@ async function login(chargeUtile){
         }
     }
 
-async function recuperationUtilisateurs(chargeUtile){
-        const reponse = await fetch ("http://localhost:5678/api/users/login", {
-            method:"POST",
-            headers:{"Content-Type": "application/json"},
-            body:chargeUtile,
-        })
-        return await reponse.json();
-    }
-    
+
 
 
 

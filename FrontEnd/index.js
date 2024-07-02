@@ -1,16 +1,22 @@
-/**Variables*/
+/**
+ * Variables
+ * */
 const token = localStorage.getItem("token");
 console.log("token", token);
 const gallery = document.getElementById("galerie");
 const filtres = document.getElementById("filtres");
 
-/* * fonction qui retourne le tableau des travaux provenant du back-end*/
+/** 
+ *fonction qui retourne le tableau des travaux provenant du back-end
+ */
 async function recupererTravaux() {
   const donnees = await fetch("http://localhost:5678/api/works");
   return await donnees.json();
 }
 
-/**fonction-Affiche travaux dans la galerie*/
+/**
+ * fonction-Affiche travaux dans la galerie
+ */
 function creationProjet(projet) {
   const figure = document.createElement("figure");
   const img = document.createElement("img");
@@ -30,6 +36,8 @@ async function affichageGalerie() {
   });
 }
 affichageGalerie();
+
+
 
 /**
  *tableaux catégorie
@@ -86,7 +94,10 @@ async function filtrerCategories() {
 }
 filtrerCategories();
 
-/**si utilisateur connecté */
+
+/**
+ * si utilisateur connecté 
+ */
 const connecte = window.sessionStorage.loged;
 const loginOut = document.getElementById("loginOut");
 const modif = document.getElementById("modif");
@@ -124,7 +135,9 @@ modale.addEventListener("click", (e) => {
     modale.style.display = "none";
   }
 });
-
+/**
+ * Création figure pour projet avec corbeille
+ */
 function travauxModale(projet) {
   const figure = document.createElement("figure");
   const img = document.createElement("img");
@@ -138,6 +151,9 @@ function travauxModale(projet) {
   modaleGalerie.appendChild(figure);
 }
 
+/**
+ * Affichage travaux dans la modale
+ */
 async function affichageGalerieModale() {
   const modaleGalerie = document.getElementById("modaleGalerie");
   modaleGalerie.innerHTML = "";
@@ -149,7 +165,11 @@ async function affichageGalerieModale() {
 }
 affichageGalerieModale();
 
-/** suppression travaux */
+
+
+/** 
+ * suppression travaux 
+ */
 function supprimerProjet() {
   const poubelles = document.querySelectorAll(".poubelle");
   const token = localStorage.getItem("token");
@@ -180,11 +200,18 @@ function supprimerProjet() {
   });
 }
 
-/** affichage modale ajout travaux*/
+
+/**
+ * affichage modale ajout travaux 
+ */
 const modaleBoiteAjout = document.getElementById("modaleBoiteAjout");
 const fleche = document.getElementById("fleche");
 const croixAjout = document.getElementById("croixAjout");
 
+
+/** 
+ * Fermeture/Affichage modale Ajout
+ */
 btnPhoto.addEventListener("click", () => {
   modaleBoiteAjout.style.display = "flex";
   modaleBoite.style.display = "none";
@@ -199,7 +226,9 @@ croixAjout.addEventListener("click", () => {
   modaleBoite.style.display = "flex";
 });
 
-/**prévisualisation photo */
+/**
+ * prévisualisation photo 
+ */
 const inputPhoto = document.getElementById("photo");
 const visuPhoto = document.querySelector(".visuPhoto");
 const labelVisuPhoto = document.getElementById("labelVisu");
@@ -218,7 +247,10 @@ inputPhoto.addEventListener("change", () => {
   }
 });
 
-/**affichage categorie dans select */
+
+/**
+ * affichage catégorie dans select
+ */
 
 async function afficherSelection() {
   const select = document.getElementById("categoriePhoto");
@@ -232,7 +264,9 @@ async function afficherSelection() {
 }
 afficherSelection();
 
-/**Post pour ajouter une photo */
+/**
+ * Post pour ajouter une photo
+ */
 const formulaire = document.getElementById("modaleFormAjout");
 const notif = document.getElementById("notif");
 
@@ -271,8 +305,8 @@ formulaire.addEventListener("submit", async (e) => {
     .then((response) => response.json())
     .then((response) => {
       console.log(response);
-      (notif.textContent = "Votre photo a été ajoutée dans votre galerie."),
-        notif.classList.add("ajout");
+      notif.textContent = "Votre photo a été ajoutée dans votre galerie.";
+      notif.classList.add("ajout");
       affichageGalerie();
       affichageGalerieModale();
       formulaire.reset();
@@ -284,7 +318,9 @@ formulaire.addEventListener("submit", async (e) => {
     });
 });
 
-/** fonction pour vérifier que le formulaire est correctement rempli */
+/**
+ * fonction pour vérifier que le formulaire est correctement rempli
+ */
 async function formComplet() {
   await formulaire.addEventListener("change", () => {
     const btnValidation = document.getElementById("btnAjout");
@@ -299,8 +335,8 @@ async function formComplet() {
       btnValidation.classList.remove("button");
       btnValidation.classList.remove("nonValide");
       console.log("ca fonctionne ");
-      (notif.textContent = "Vous pouvez valider le formulaire."),
-        notif.classList.add("ajout");
+      notif.textContent = "Vous pouvez valider le formulaire.";
+      notif.classList.add("ajout");
       notif.classList.remove("echec");
     } else {
       btnValidation.classList.add("nonValide");
