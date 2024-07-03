@@ -411,6 +411,9 @@ footer nav ul {
 					padding-top: 30px;
 					color: #CBD6DC;
 				}
+				.erreurTaille{
+					color: red;
+				}
 				label{
 					text-align: center;
 					display: flex;

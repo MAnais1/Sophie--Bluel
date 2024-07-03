@@ -7,7 +7,7 @@ const gallery = document.getElementById("galerie");
 const filtres = document.getElementById("filtres");
 
 /** 
- *fonction qui retourne le tableau des travaux provenant du back-end
+ *Fonction qui retourne le tableau des travaux provenant du back-end
  */
 async function recupererTravaux() {
   const donnees = await fetch("http://localhost:5678/api/works");
@@ -15,7 +15,7 @@ async function recupererTravaux() {
 }
 
 /**
- * fonction-Affiche travaux dans la galerie
+ * Fonction-Affiche travaux dans la galerie
  */
 function creationProjet(projet) {
   const figure = document.createElement("figure");
@@ -40,7 +40,7 @@ affichageGalerie();
 
 
 /**
- *tableaux catégorie
+ *Tableau catégorie
  */
 async function recupererCategorie() {
   const reponse = await fetch("http://localhost:5678/api/categories");
@@ -69,7 +69,7 @@ async function afficherBoutons() {
 afficherBoutons();
 
 /**
- * filtre au clique
+ * Filtre 
  */
 async function filtrerCategories() {
   const projets = await recupererTravaux();
@@ -96,7 +96,7 @@ filtrerCategories();
 
 
 /**
- * si utilisateur connecté 
+ * Si utilisateur connecté 
  */
 const connecte = window.sessionStorage.loged;
 const loginOut = document.getElementById("loginOut");
@@ -108,7 +108,7 @@ const boiteModale = document.getElementById("modaleBoite");
 const btnPhoto = document.getElementById("btnPhoto");
 const modaleGalerie = document.getElementById("modaleGalerie");
 
-if (connecte == "true") {
+if (connecte) {
   edit.innerHTML = `<i class="fa-regular fa-pen-to-square"></i> Mode édition`;
   edit.classList.add("edit");
   loginOut.textContent = "Logout";
@@ -119,7 +119,7 @@ if (connecte == "true") {
   });
 }
 
-/** affichage Modale */
+/** Affichage Modale */
 
 modif.addEventListener("click", () => {
   modale.style.display = "flex";
@@ -168,7 +168,7 @@ affichageGalerieModale();
 
 
 /** 
- * suppression travaux 
+ * Suppression travaux 
  */
 function supprimerProjet() {
   const poubelles = document.querySelectorAll(".poubelle");
@@ -202,7 +202,7 @@ function supprimerProjet() {
 
 
 /**
- * affichage modale ajout travaux 
+ * Affichage modale ajout travaux 
  */
 const modaleBoiteAjout = document.getElementById("modaleBoiteAjout");
 const fleche = document.getElementById("fleche");
@@ -227,29 +227,42 @@ croixAjout.addEventListener("click", () => {
 });
 
 /**
- * prévisualisation photo 
+ * Prévisualisation photo 
  */
 const inputPhoto = document.getElementById("photo");
 const visuPhoto = document.querySelector(".visuPhoto");
 const labelVisuPhoto = document.getElementById("labelVisu");
+const formulaire = document.getElementById("modaleFormAjout");
 
 inputPhoto.addEventListener("change", () => {
   const fichier = inputPhoto.files[0];
   console.log(fichier);
-  if (fichier) {
-    const reader = new FileReader();
-    reader.onload = function (e) {
+
+  if (inputPhoto.files.length > 0) {
+    const fileSize = inputPhoto.files.item(0).size;
+    const fileMo = fileSize / 1024 ** 2;
+    if (fileMo >= 4) {
+      labelVisuPhoto.classList.add("erreurTaille");
+      formulaire.reset();
+    } else {
+      const reader = new FileReader();
+      reader.onload = function (e) {
       visuPhoto.src = e.target.result;
       visuPhoto.style.display = "flex";
       labelVisuPhoto.style.display = "none";
+      labelVisuPhoto.classList.remove("erreurTaille");
+      
     };
     reader.readAsDataURL(fichier);
+    }
   }
+
+  
 });
 
 
 /**
- * affichage catégorie dans select
+ * Affichage catégorie dans select
  */
 
 async function afficherSelection() {
@@ -265,9 +278,9 @@ async function afficherSelection() {
 afficherSelection();
 
 /**
- * Post pour ajouter une photo
+ * Ajout photo
  */
-const formulaire = document.getElementById("modaleFormAjout");
+
 const notif = document.getElementById("notif");
 
 formulaire.addEventListener("submit", async (e) => {
@@ -319,7 +332,7 @@ formulaire.addEventListener("submit", async (e) => {
 });
 
 /**
- * fonction pour vérifier que le formulaire est correctement rempli
+ * Fonction pour vérifier que le formulaire est correctement rempli
  */
 async function formComplet() {
   await formulaire.addEventListener("change", () => {
